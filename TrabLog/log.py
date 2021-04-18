@@ -4,7 +4,7 @@ redo2 = []
 undo = []
 arquivo = []
 variables = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0}
-with open('teste01', newline='') as inputfile:
+with open('teste03.txt', newline='') as inputfile:
     for row in csv.reader(inputfile):
         arquivo.append(row)
 arquivo.reverse()
