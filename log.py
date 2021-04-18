@@ -22,7 +22,6 @@ for linha in reversed(arquivolist): #Verificar os casos e criar as listas de RED
         REDO.append(extracT.findall(linha)[0])
     
 
-
 print("Aplicado REDO:", REDO, "\n")
 
 for j in range(1,len(arquivolist)-1,1):
