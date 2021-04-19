@@ -4,14 +4,16 @@ redo2 = []
 undo = []
 arquivo = []
 variables = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0}
-with open('teste03.txt', newline='') as inputfile:
+with open('teste01.txt', newline='') as inputfile:
     for row in csv.reader(inputfile):
         arquivo.append(row)
 arquivo.reverse()
 res_list = [item for list2 in arquivo for item in list2]
 lenght = len(res_list)
 i = 0
+input()
 print("Passo 1")
+input()
 while res_list[i][:-3] != "<Start CKPT":
     if res_list[i][:8] == "<commit " :
         redo.append(res_list[i][-3:-1])
@@ -19,9 +21,16 @@ while res_list[i][:-3] != "<Start CKPT":
         if res_list[i][-3:-1] not in redo:
             undo.append(res_list[i][-3:-1])
     i += 1
+
+print("Undo - ")
 print(undo)
+print()
+print("Redo - ")
 print(redo)
+print()
+input()
 print("Passo 2")
+input()
 while res_list[i][-2:-1] != ")" :
     x = redo.count(res_list[i][-2:])
     if x == 0 :
@@ -35,7 +44,9 @@ print("Fim passo 2")
 redo2 = redo.copy()
 print(redo)
 print(undo)
+input()
 print("Passo 3")
+input()
 tamanho = len(undo)
 aux = 0
 print(undo)
@@ -50,7 +61,9 @@ while aux < aux2 - 2:
         print("fez undo")
         print(res_list[aux][1:3])
     aux += 1
+input()
 print("Passo 4")
+input()
 print(redo)
 print(res_list[aux])
 tamanho = len(redo2)
@@ -64,7 +77,9 @@ if tamanho > 0 :
         i += 1
         tamanho = len(redo2)
 i -= 1
+input()
 print("Passo 5")
+input()
 print(res_list[i])
 aux = len(res_list)
 while i > 0 :
@@ -73,8 +88,10 @@ while i > 0 :
         variables[res_list[i+1]] = res_list[i+3][-3:-1]
         redo.remove(res_list[i][1:3])
         print("fez redo")
+        input()
 
     i -= 1
+input()
 print(undo)
 print(redo2)
 print(variables)

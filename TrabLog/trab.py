@@ -5,12 +5,17 @@ Undo = []
 Check = []
 variables = {'A':0, 'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0}
 arquivo = []
-with open('teste03.txt', newline='') as inputfile:
+with open('teste01.txt', newline='') as inputfile:
     for row in csv.reader(inputfile):
         arquivo.append(row)
 
 arquivo.reverse()
+
 res_list = [item for list2 in arquivo for item in list2]
+
+print(res_list)
+input()
+
 tam = len(res_list)
 i=0
 #o primeiro backlog que define o que deve ser Undo e Redo
@@ -41,7 +46,7 @@ for item in res_list:
 			
 	i=i+1
 
-CKPT = 'false'
+CKPT = False
 save = -1
 i = 0
 #o segundo backlog que executa os Undo e Redo comitados antes do CKPT
@@ -52,7 +57,7 @@ for item in res_list:
 	#lista2 = list(instrucao.split(',', 4))
 	if 'commit' in instrucao:
 		lista1 = list(instrucao.split(' ', 2))
-		if CKPT == 'true':
+		if CKPT == True:
 			Redo.remove(lista1[1])
 		else:
 			pass
@@ -62,9 +67,9 @@ for item in res_list:
 			pass
 		else :
 			if 'Start' in instrucao: #considera o checkpoint
-				if CKPT = 'false':
+				if not CKPT:
 					save = i; #salva a posição em que o checkpoint foi encontrado
-					CKPT = 'true'
+					CKPT = True
 				else:
 					pass
 			else:
@@ -76,7 +81,7 @@ for item in res_list:
 				else:
 					pass
 	i = i+1
-	if CKPT == 'true':
+	if CKPT:
 		while i != save:
 			if res_list[i][:1] == 'T':
 				#a ultima instrução que faltou foi a opereção
@@ -90,8 +95,7 @@ for item in res_list:
 					Redo.remove(lista1[1])
 				else:
 					pass
-		i = i-1
-					
+			i = i-1
 
 i=0
 #agora executa os redo

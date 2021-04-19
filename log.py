@@ -1,35 +1,40 @@
-import re;
-arquivo = open('teste03', 'r')
-arquivolist = list(arquivo)     #cria uma lista com o .txt
-REDO = []                       #salva quem vai ser feito REDO
+import psycopg2
+import asyncio
 
-#Variaveis p/ identificar se existe no .txt
-checkvalue = re.compile(r'T[0-9]*,', re.IGNORECASE) #re.IGNORECASE -> ignorar se maiuscula ou minuscula
-commit = re.compile(r'commit', re.IGNORECASE) #re.IGNORECASE -> ignorar se maiuscula ou minuscula
-extracT = re.compile(r'(?!commit\b)(?!CKPT\b)(?!Start\b)\b\w+', re.IGNORECASE) #Ignora as palavras descritas e coloca as demais em uma lista com .findall
-words = re.compile(r'\w+', re.IGNORECASE)   #Utilizado p/ pegar o valor das variaveis
+class Banco:
+    def connect(self):
+        try:
+            self.connection = psycopg2.connect(user="postgres", password="root", host="127.0.0.1", database="log")
+            self.connection.autocommit = True
+            self.cursor = self.connection.cursor()
+            
+        except (Exception, psycopg2.DatabaseError) as error:
+            print("Deu caca\n")
+            print(error)
 
-valores = words.findall(arquivolist[0])
-variaveis = {}
-for i in range(0,len(valores),2): #Iniciar primeiros valores das variáveis (A B C...)
-    variaveis[valores[i]]= valores[i+1]
-del valores
-print("", variaveis)
-end = 0
+    def restoreOriginal(self):
+        try:
+            self.cursor.execute("""INSERT INTO logtable VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""",(1, variables[var[0]], variables[var[1]], variables[var[2]], variables[var[3]], variables[var[4]], variables[var[5]], variables[var[6]]))
+        
+        except (Exception, psycopg2.DatabaseError) as error:
+            print("Deu caca: ")
+            print(error)
 
-for linha in reversed(arquivolist): #Verificar os casos e criar as listas de REDO
-    if commit.search(linha):  #Procura commit
-        REDO.append(extracT.findall(linha)[0])
+        return 0
+
+    #def async def runTransaction(self):
+        #pass
     
+    #async def executeQuery(self):
+        #pass
 
-print("Aplicado REDO:", REDO, "\n")
+variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0}
+var = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+varlenght = 7
 
-for j in range(1,len(arquivolist)-1,1):
-    linha = arquivolist[j]    
-    if (checkvalue.search(linha)):
-        if(extracT.findall(linha)[0] in REDO):           
-            variaveis[words.findall(linha)[1]] = words.findall(linha)[2]
-   
+arquivo = open('teste.txt', 'r')
+arquivolist = list(arquivo)     #cria uma lista com o .txt
 
-print("Resultado:", variaveis)
-arquivo.close()
+banco = Banco()
+banco.connect()
+banco.restoreOriginal()
