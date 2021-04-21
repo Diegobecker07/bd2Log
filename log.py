@@ -14,6 +14,7 @@ class Banco:
 
     def restoreOriginal(self):
         try:
+            self.cursor.execute("""DELETE * FROM logtable;""")
             self.cursor.execute("""INSERT INTO logtable VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""",(1, variables[var[0]], variables[var[1]], variables[var[2]], variables[var[3]], variables[var[4]], variables[var[5]], variables[var[6]]))
         
         except (Exception, psycopg2.DatabaseError) as error:
@@ -31,6 +32,8 @@ class Banco:
 variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0}
 var = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 varlenght = 7
+
+redo = []
 
 arquivo = open('teste.txt', 'r')
 arquivolist = list(arquivo)     #cria uma lista com o .txt
