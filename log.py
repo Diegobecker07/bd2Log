@@ -163,8 +163,25 @@ class Banco:
             print("Execute query")
 
     def fezRedo(self):
-        
+        self.final = 0
+        for linha in reversed(arquivolist): 
+            if 'Start CKPT' in linha:
+                if self.final: 
+                    check = extracT.findall(linha)
+                    print("Start Checkpoint em", check)         
+                    break
+
+            elif 'commit' in linha:
+                check = extracT.findall(linha)[0]
+                REDO1.append(check)
+
+            elif 'End CKPT' in linha:
+                self.final += 1
+
+        print("\nAplicar REDO nas transações:", REDO1)
+
 REDO = []
+REDO1 = []
 
 variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': 0}
 var = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
@@ -185,15 +202,11 @@ for linha in reversed(arquivolist): #Verificar os casos e criar as listas de RED
     if commit.search(linha):  #Procura commit
         REDO.append(extracT.findall(linha)[0])
 
-print("Aplicado REDO:", REDO, "\n")
-
 for j in range(1,len(arquivolist)-1,1):
     linha = arquivolist[j]    
     if (checkvalue.search(linha)):
         if(extracT.findall(linha)[0] in REDO):           
             variables[words.findall(linha)[1]] = words.findall(linha)[2]
 
-print(variables)
-print()
-
-banco.verificaRedo()
+banco.fezRedo()
+#banco.verificaRedo()
