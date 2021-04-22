@@ -23,7 +23,7 @@ class Banco:
 
         return 0
 
-    def verificaRedo(self):
+    def atualizaValores(self):
         self.cursor.execute("""SELECT A FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
         dado = str(dados[0]).replace("(", "")
@@ -162,9 +162,10 @@ class Banco:
             
             print("Valor H atualizado")
 
-    def fezRedo(self):
+    def verificaRedo(self):
         self.final = 0
         for linha in reversed(arquivolist): 
+            print(linha)
             if 'Start CKPT' in linha:
                 if self.final: 
                     check = extracT.findall(linha)
@@ -230,7 +231,7 @@ for j in range(1,len(arquivolist)-1,1):
         if(extracT.findall(linha)[0] in REDO):           
             variables[words.findall(linha)[1]] = words.findall(linha)[2]
 
-banco.fezRedo() #indica quais transações irão realizar o redo
-banco.verificaRedo() #executará o redo no banco
+banco.verificaRedo() #indica quais transações irão realizar o redo
+banco.atualizaValores() #executará o redo no banco
 banco.valoresAtuais() #irá printar os valores que estão no banco
 banco.disconnect() #desconectar banco
