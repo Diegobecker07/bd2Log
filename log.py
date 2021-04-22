@@ -188,15 +188,11 @@ class Banco:
             print("Deu caca: ")
             print(error)
 
+
         print("Valores no banco:")
         self.data = self.cursor.fetchall()
-        self.y = 0
         for self.row in self.data:
-            if(self.y == 0):
-                print()
-            else:
-                print("{0} : {1}".format(var[i], self.row[self.y+1]))
-            self.y += 1
+            print(self.row)
 
 REDO = []
 REDO1 = []
