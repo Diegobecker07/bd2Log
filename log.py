@@ -4,8 +4,7 @@ import re
 class Banco:
     def connect(self):
         try:
-            self.connection = psycopg2.connect(
-                user="postgres", password="root", host="127.0.0.1", database="log")
+            self.connection = psycopg2.connect(user="postgres", password="root", host="127.0.0.1", database="log")
             self.connection.autocommit = True
             self.cursor = self.connection.cursor()
 
@@ -27,27 +26,67 @@ class Banco:
     def verificaRedo(self):
         self.cursor.execute("""SELECT A FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
-        
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
+
         self.cursor.execute("""SELECT B FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
+        dados = self.cursor.fetchall()
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
 
         self.cursor.execute("""SELECT C FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
+        dados = self.cursor.fetchall()
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
 
         self.cursor.execute("""SELECT D FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
+        dados = self.cursor.fetchall()
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
 
         self.cursor.execute("""SELECT E FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
+        dados = self.cursor.fetchall()
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
 
         self.cursor.execute("""SELECT F FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
+        dados = self.cursor.fetchall()
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
 
         self.cursor.execute("""SELECT G FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
+        dados = self.cursor.fetchall()
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
 
         self.cursor.execute("""SELECT H FROM logtable where id = 1;""")
         dados = self.cursor.fetchall()
+        dados = self.cursor.fetchall()
+        dado = str(dados[0]).replace("(", "")
+        dado = dado.replace(")","")
+        dado = dado.replace(",","")
+        print(dado)
+
 REDO = []
 
 variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': 0}
@@ -56,7 +95,6 @@ var = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 arquivo = open('teste.txt', 'r')
 arquivolist = list(arquivo)     #cria uma lista com o .txt
 
-#Variaveis p/ identificar se existe no .txt
 checkvalue = re.compile(r'T[0-9]*,', re.IGNORECASE) #re.IGNORECASE -> ignorar se maiuscula ou minuscula
 commit = re.compile(r'commit', re.IGNORECASE) #re.IGNORECASE -> ignorar se maiuscula ou minuscula
 extracT = re.compile(r'(?!commit\b)(?!CKPT\b)(?!Start\b)\b\w+', re.IGNORECASE) #Ignora as palavras descritas e coloca as demais em uma lista com .findall
