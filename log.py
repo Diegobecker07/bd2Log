@@ -41,7 +41,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor A atualizado")
 
         self.cursor.execute("""SELECT B FROM logtable where id = 1;""")
         dados1 = self.cursor.fetchall()
@@ -58,7 +58,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor B atualizado")
 
         self.cursor.execute("""SELECT C FROM logtable where id = 1;""")
         dados2 = self.cursor.fetchall()
@@ -75,7 +75,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor C atualizado")
 
         self.cursor.execute("""SELECT D FROM logtable where id = 1;""")
         dados3 = self.cursor.fetchall()
@@ -92,7 +92,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor D atualizado")
 
         self.cursor.execute("""SELECT E FROM logtable where id = 1;""")
         dados4 = self.cursor.fetchall()
@@ -109,7 +109,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor E atualizado")
 
         self.cursor.execute("""SELECT F FROM logtable where id = 1;""")
         dados5 = self.cursor.fetchall()
@@ -126,7 +126,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor F atualizado")
 
         self.cursor.execute("""SELECT G FROM logtable where id = 1;""")
         dados6 = self.cursor.fetchall()
@@ -143,7 +143,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor G atualizado")
 
         self.cursor.execute("""SELECT H FROM logtable where id = 1;""")
         dados7 = self.cursor.fetchall()
@@ -160,7 +160,7 @@ class Banco:
                 print("Deu caca: ")
                 print(error)
             
-            print("Execute query")
+            print("Valor H atualizado")
 
     def fezRedo(self):
         self.final = 0
@@ -209,4 +209,4 @@ for j in range(1,len(arquivolist)-1,1):
             variables[words.findall(linha)[1]] = words.findall(linha)[2]
 
 banco.fezRedo()
-#banco.verificaRedo()
+banco.verificaRedo()
