@@ -29,56 +29,136 @@ class Banco:
         dado = str(dados[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['A']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set A = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
         self.cursor.execute("""SELECT B FROM logtable where id = 1;""")
         dados1 = self.cursor.fetchall()
         dado = str(dados1[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['B']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set B = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
         self.cursor.execute("""SELECT C FROM logtable where id = 1;""")
         dados2 = self.cursor.fetchall()
         dado = str(dados2[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['C']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set C = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
         self.cursor.execute("""SELECT D FROM logtable where id = 1;""")
         dados3 = self.cursor.fetchall()
         dado = str(dados3[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['D']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set D = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
         self.cursor.execute("""SELECT E FROM logtable where id = 1;""")
         dados4 = self.cursor.fetchall()
         dado = str(dados4[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['E']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set E = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
         self.cursor.execute("""SELECT F FROM logtable where id = 1;""")
         dados5 = self.cursor.fetchall()
         dado = str(dados5[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['F']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set F = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
         self.cursor.execute("""SELECT G FROM logtable where id = 1;""")
         dados6 = self.cursor.fetchall()
         dado = str(dados6[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['G']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set G = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
         self.cursor.execute("""SELECT H FROM logtable where id = 1;""")
         dados7 = self.cursor.fetchall()
         dado = str(dados7[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        print(dado)
+        if(int(dado) == variables['H']):
+            pass
+        else:
+            try:
+                self.cursor.execute("""update logtable set H = {0} where id = 1;""".format(dado))
+
+            except (Exception, psycopg2.DatabaseError) as error:
+                print("Deu caca: ")
+                print(error)
+            
+            print("Execute query")
 
 REDO = []
 
@@ -108,9 +188,5 @@ for j in range(1,len(arquivolist)-1,1):
     if (checkvalue.search(linha)):
         if(extracT.findall(linha)[0] in REDO):           
             variables[words.findall(linha)[1]] = words.findall(linha)[2]
-
-print("Resultado:", variables)
-arquivo.close()
-print()
 
 banco.verificaRedo()
