@@ -180,6 +180,24 @@ class Banco:
 
         print("\nAplicar REDO nas transações:", REDO1)
 
+    def valoresAtuais(self):
+        try:
+            self.cursor.execute("""SELECT * FROM logtable;""")
+
+        except (Exception, psycopg2.DatabaseError) as error:
+            print("Deu caca: ")
+            print(error)
+
+        print("Valores no banco:")
+        self.data = self.cursor.fetchall()
+        self.y = 0
+        for self.row in self.data:
+            if(self.y == 0):
+                print()
+            else:
+                print("{0} : {1}".format(var[i], self.row[self.y+1]))
+            self.y += 1
+
 REDO = []
 REDO1 = []
 
@@ -196,7 +214,10 @@ words = re.compile(r'\w+', re.IGNORECASE)   #Utilizado p/ pegar o valor das vari
 
 banco = Banco()
 banco.connect()
-banco.restoreOriginal()
+
+print("Valores iniciais - ", variables)
+
+banco.restoreOriginal() #restaurar banco
 
 for linha in reversed(arquivolist): #Verificar os casos e criar as listas de REDO
     if commit.search(linha):  #Procura commit
@@ -208,5 +229,6 @@ for j in range(1,len(arquivolist)-1,1):
         if(extracT.findall(linha)[0] in REDO):           
             variables[words.findall(linha)[1]] = words.findall(linha)[2]
 
-banco.fezRedo()
-banco.verificaRedo()
+banco.fezRedo() #indica quais transações irão realizar o redo
+banco.verificaRedo() #executará o redo no banco
+banco.valoresAtuais() #irá printar os valores que estão no banco
