@@ -194,6 +194,10 @@ class Banco:
         for self.row in self.data:
             print(self.row)
 
+    def disconnect(self):
+        self.cursor.close()
+        self.connection.close()
+
 REDO = []
 REDO1 = []
 
@@ -228,3 +232,4 @@ for j in range(1,len(arquivolist)-1,1):
 banco.fezRedo() #indica quais transações irão realizar o redo
 banco.verificaRedo() #executará o redo no banco
 banco.valoresAtuais() #irá printar os valores que estão no banco
+banco.disconnect() #desconectar banco
