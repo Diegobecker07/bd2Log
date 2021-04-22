@@ -1,3 +1,4 @@
+A=32 | B=30 | C=90 | D=40 | E=28 | F=2 | G=0 | H=0
 <start T1>
 <T1,A,20>
 <start T2>
@@ -12,7 +13,6 @@
 <T4,C,90>
 <start T5>
 <T5,D,65>
-<Start CKPT(T3,T4,T5)>
 <commit T4>
 <T5,D,40>
 <start T6>
@@ -22,7 +22,14 @@
 <commit T3>
 <T6,A,32>
 <commit T5>
+<commit T6>
 <start T7>
 <T7,B,30>
+<Start CKPT(T7)>
 <commit T7>
 <End CKPT>
+<start T8>
+<T8,G,30>
+<start T9>
+<commit T8>
+<T9,H,30>

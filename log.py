@@ -201,7 +201,8 @@ class Banco:
 REDO = []
 REDO1 = []
 
-variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': 0}
+#variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': 0}
+variables = {'A': 32, 'B': 30, 'C': 90, 'D': 40, 'E': 28, 'F': 2, 'G': 0, 'H': 0}
 var = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
 arquivo = open('teste1.txt', 'r')
