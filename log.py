@@ -25,15 +25,32 @@ class Banco:
         return 0
 
     def verificaRedo(self):
-        pass
+        self.cursor.execute("""SELECT A FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
+        
+        self.cursor.execute("""SELECT B FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
 
-    def executeRedo(self):
-        pass
+        self.cursor.execute("""SELECT C FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
 
+        self.cursor.execute("""SELECT D FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
 
+        self.cursor.execute("""SELECT E FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
+
+        self.cursor.execute("""SELECT F FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
+
+        self.cursor.execute("""SELECT G FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
+
+        self.cursor.execute("""SELECT H FROM logtable where id = 1;""")
+        dados = self.cursor.fetchall()
 REDO = []
 
-variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': '0'}
+variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': 0}
 var = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
 arquivo = open('teste.txt', 'r')
@@ -63,3 +80,6 @@ for j in range(1,len(arquivolist)-1,1):
 
 print("Resultado:", variables)
 arquivo.close()
+print()
+
+banco.verificaRedo()
