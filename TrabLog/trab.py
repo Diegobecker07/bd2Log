@@ -13,14 +13,17 @@ arquivo.reverse()
 
 res_list = [item for list2 in arquivo for item in list2]
 
-print(res_list)
+print(res_list) #lista com todo arquivo txt
 input()
 
 tam = len(res_list)
 i=0
+
 #o primeiro backlog que define o que deve ser Undo e Redo
 for item in res_list:
 	instrucao = item
+	print(instrucao)
+	#input()
 	#remove os sinais de maior e menor so pra n dar merda
 	instrucao = instrucao.replace("<","")
 	instrucao = instrucao.replace(">","")
@@ -45,6 +48,18 @@ for item in res_list:
 				pass
 			
 	i=i+1
+#print(lista1)
+#print(lista3)
+#print(tr)
+#print(Check)
+
+#print("Redo:")
+#print(Redo)
+#print("Undo:")
+#print(Undo)
+
+print("Prim backlog acabou")
+input()
 
 CKPT = False
 save = -1
