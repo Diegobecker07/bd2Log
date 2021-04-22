@@ -29,11 +29,13 @@ class Banco:
         dado = str(dados[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
+
         if(int(dado) == variables['A']):
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set A = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set A = {0} where id = 1;""".format(variables['A']))
+                input()
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -50,7 +52,7 @@ class Banco:
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set B = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set B = {0} where id = 1;""".format(variables['B']))
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -67,7 +69,7 @@ class Banco:
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set C = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set C = {0} where id = 1;""".format(variables['C']))
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -84,7 +86,7 @@ class Banco:
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set D = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set D = {0} where id = 1;""".format(variables['D']))
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -101,7 +103,7 @@ class Banco:
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set E = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set E = {0} where id = 1;""".format(variables['E']))
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -118,7 +120,7 @@ class Banco:
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set F = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set F = {0} where id = 1;""".format(variables['F']))
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -135,7 +137,7 @@ class Banco:
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set G = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set G = {0} where id = 1;""".format(variables['G']))
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -152,7 +154,7 @@ class Banco:
             pass
         else:
             try:
-                self.cursor.execute("""update logtable set H = {0} where id = 1;""".format(dado))
+                self.cursor.execute("""update logtable set H = {0} where id = 1;""".format(variables['H']))
 
             except (Exception, psycopg2.DatabaseError) as error:
                 print("Deu caca: ")
@@ -160,6 +162,8 @@ class Banco:
             
             print("Execute query")
 
+    def fezRedo(self):
+        
 REDO = []
 
 variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': 0}
@@ -188,5 +192,8 @@ for j in range(1,len(arquivolist)-1,1):
     if (checkvalue.search(linha)):
         if(extracT.findall(linha)[0] in REDO):           
             variables[words.findall(linha)[1]] = words.findall(linha)[2]
+
+print(variables)
+print()
 
 banco.verificaRedo()
