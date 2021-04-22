@@ -16,8 +16,7 @@ class Banco:
     def restoreOriginal(self):
         try:
             self.cursor.execute("""DELETE FROM logtable;""")
-            self.cursor.execute("""INSERT INTO logtable VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""", (
-                1, variables[var[0]], variables[var[1]], variables[var[2]], variables[var[3]], variables[var[4]], variables[var[5]], variables[var[6]]))
+            self.cursor.execute("""INSERT INTO logtable VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""", (1, variables[var[0]], variables[var[1]], variables[var[2]], variables[var[3]], variables[var[4]], variables[var[5]], variables[var[6]]))
 
         except (Exception, psycopg2.DatabaseError) as error:
             print("Deu caca: ")
@@ -104,11 +103,9 @@ class Banco:
                     pass
                 else :
                     if 'Start' in self.instrucao:
-                        #o checkpoint não faz diferença
                         pass
                     else:
                         if self.instrucao[:1] == 'T':
-                            #a ultima instrução que faltou foi a opereção
                                 if self.instrucao in redo:
                                     variables[res_list[self.i+1]] = res_list[self.i+3].replace(">", "")
                                 else:
