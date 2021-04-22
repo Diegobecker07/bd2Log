@@ -204,7 +204,7 @@ REDO1 = []
 variables = {'A': 20, 'B': 20, 'C': 70, 'D': 50, 'E': 17, 'F': 1, 'G': 0, 'H': 0}
 var = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
-arquivo = open('teste.txt', 'r')
+arquivo = open('teste1.txt', 'r')
 arquivolist = list(arquivo)     #cria uma lista com o .txt
 
 checkvalue = re.compile(r'T[0-9]*,', re.IGNORECASE) #re.IGNORECASE -> ignorar se maiuscula ou minuscula
