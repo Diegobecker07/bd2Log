@@ -165,7 +165,6 @@ class Banco:
     def verificaRedo(self):
         self.final = 0
         for linha in reversed(arquivolist): 
-            print(linha)
             if 'Start CKPT' in linha:
                 if self.final: 
                     check = extracT.findall(linha)
