@@ -30,8 +30,8 @@ class Banco:
         dado = dado.replace(")","")
         dado = dado.replace(",","")
 
-        if(int(dado) == variables['A']):
-            pass
+        if(int(dado) == int(variables['A'])):
+            print("Coluna A permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set A = {0} where id = 1;""".format(variables['A']))
@@ -48,8 +48,8 @@ class Banco:
         dado = str(dados1[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        if(int(dado) == variables['B']):
-            pass
+        if(int(dado) == int(variables['B'])):
+            print("Coluna B permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set B = {0} where id = 1;""".format(variables['B']))
@@ -65,8 +65,8 @@ class Banco:
         dado = str(dados2[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        if(int(dado) == variables['C']):
-            pass
+        if(int(dado) == int(variables['C'])):
+            print("Coluna C permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set C = {0} where id = 1;""".format(variables['C']))
@@ -82,8 +82,8 @@ class Banco:
         dado = str(dados3[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        if(int(dado) == variables['D']):
-            pass
+        if(int(dado) == int(variables['D'])):
+            print("Coluna D permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set D = {0} where id = 1;""".format(variables['D']))
@@ -99,8 +99,8 @@ class Banco:
         dado = str(dados4[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        if(int(dado) == variables['E']):
-            pass
+        if(int(dado) == int(variables['E'])):
+            print("Coluna E permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set E = {0} where id = 1;""".format(variables['E']))
@@ -116,8 +116,8 @@ class Banco:
         dado = str(dados5[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        if(int(dado) == variables['F']):
-            pass
+        if(int(dado) == int(variables['F'])):
+            print("Coluna F permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set F = {0} where id = 1;""".format(variables['F']))
@@ -133,8 +133,8 @@ class Banco:
         dado = str(dados6[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        if(int(dado) == variables['G']):
-            pass
+        if(int(dado) == int(variables['G'])):
+            print("Coluna G permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set G = {0} where id = 1;""".format(variables['G']))
@@ -150,8 +150,8 @@ class Banco:
         dado = str(dados7[0]).replace("(", "")
         dado = dado.replace(")","")
         dado = dado.replace(",","")
-        if(int(dado) == variables['H']):
-            pass
+        if(int(dado) == int(variables['H'])):
+            print("Coluna H permanece")
         else:
             try:
                 self.cursor.execute("""update logtable set H = {0} where id = 1;""".format(variables['H']))
@@ -165,6 +165,7 @@ class Banco:
     def verificaRedo(self):
         self.final = 0
         for linha in reversed(arquivolist): 
+
             if 'Start CKPT' in linha:
                 if self.final: 
                     check = extracT.findall(linha)
